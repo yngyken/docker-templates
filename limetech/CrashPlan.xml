@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Container>
+  <Date>2015-06-17</Date>
+  <Beta>False</Beta>
+  <Category>Backup:</Category>
+  <Name>CrashPlan</Name>
+  <Overview>
+    With unlimited, set-it-and-get-at-it backup to multiple destinations, plus anywhere, anytime access to ALL your files, CrashPlan is the simplest, surest way to protect your digital life.
+  </Overview>
+  <Description>
+    With unlimited, set-it-and-get-at-it backup to multiple destinations, plus anywhere, anytime access to ALL your files, CrashPlan is the simplest, surest way to protect your digital life.[br][br]
+    [b][span style='color: #E80000;']Directions:[/span][/b][br]
+    [b]/config[/b] : this path is where the configuration of CrashPlan is stored to.[br]
+    [b]/data[/b] : normally this should point to '/mnt/user', but you can set this to any directory you wish to backup. You may add additional paths too.
+  </Description>
+  <Registry>https://registry.hub.docker.com/u/limetech/crashplan/</Registry>
+  <GitHub>https://github.com/limetech/dockerapp-crashplan</GitHub>
+  <Support>http://lime-technology.com/forum/index.php?topic=40654.0</Support>
+  <Repository>limetech/crashplan</Repository>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+  <Environment/>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+      <Port>
+        <HostPort>8080</HostPort>
+        <ContainerPort>8080</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+      <Port>
+        <HostPort>4242</HostPort>
+        <ContainerPort>4242</ContainerPort>
+        <Protocol>tcp</Protocol>
+      </Port>
+    </Publish>
+  </Networking>
+  <Data>
+    <Volume>
+      <HostDir>/mnt/user/appdata/crashplan</HostDir>
+      <ContainerDir>/config</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir></HostDir>
+      <ContainerDir>/data</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+  </Data>
+  <WebUI>http://[IP]:[PORT:8080]/#/client/c/CrashPlanDesktop</WebUI>
+  <Icon>http://d2631fvi2jdnb6.cloudfront.net/docker/limetech/crashplan.png</Icon>
+</Container>
