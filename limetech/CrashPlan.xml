@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Container>
-  <Date>2015-06-17</Date>
-  <Beta>False</Beta>
+  <Date>2015-06-23</Date>
+  <Beta>True</Beta>
   <Category>Backup:</Category>
   <Name>CrashPlan</Name>
+  <Changes>
+[center][img width='155px' src='http://d2631fvi2jdnb6.cloudfront.net/docker/limetech.png'][/center]
+
+[center][font size=4]CrashPlan Change Log[/font][/center]
+
+[font size=3]2015.06.23[/font]
+- Initial Release (beta)
+  </Changes>
   <Overview>
     With unlimited, set-it-and-get-at-it backup to multiple destinations, plus anywhere, anytime access to ALL your files, CrashPlan is the simplest, surest way to protect your digital life.
   </Overview>
   <Description>
     With unlimited, set-it-and-get-at-it backup to multiple destinations, plus anywhere, anytime access to ALL your files, CrashPlan is the simplest, surest way to protect your digital life.[br][br]
     [b][span style='color: #E80000;']Directions:[/span][/b][br]
-    [b]/config[/b] : this path is where the configuration of CrashPlan is stored to.[br]
-    [b]/data[/b] : normally this should point to '/mnt/user', but you can set this to any directory you wish to backup. You may add additional paths too.
+    [b]/config[/b] : path to where the configuration of CrashPlan is stored to.[br]
+    [b]/backups[/b] : target path where incoming backups are store.[br]
+    [b]/unraid[/b] : unraid shares and disks you can use as a source for CrashPlan to backup, this should point to '/mnt'.
   </Description>
   <Registry>https://registry.hub.docker.com/u/limetech/crashplan/</Registry>
   <GitHub>https://github.com/limetech/dockerapp-crashplan</GitHub>
@@ -42,8 +51,13 @@
       <Mode>rw</Mode>
     </Volume>
     <Volume>
-      <HostDir></HostDir>
-      <ContainerDir>/data</ContainerDir>
+      <HostDir>/mnt/user/crashplan_backups</HostDir>
+      <ContainerDir>/backups</ContainerDir>
+      <Mode>rw</Mode>
+    </Volume>
+    <Volume>
+      <HostDir>/mnt</HostDir>
+      <ContainerDir>/unraid</ContainerDir>
       <Mode>rw</Mode>
     </Volume>
   </Data>
